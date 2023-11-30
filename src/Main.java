@@ -1,3 +1,4 @@
+import java.util.Random;
 import java.util.Scanner;
 
 public class Main {
@@ -15,6 +16,8 @@ public class Main {
                 LinearSearch();
             }else if(userInput.equals("2")) {
                 BinarySearch();
+            }else if(userInput.equals("3")) {
+                BubbleSort();
             }
         }
 
@@ -66,7 +69,39 @@ public class Main {
 
     }
 
+    public static void BubbleSort() {
+        // This sort is O(n^2)
+        int[] randomNumbers = new int[10];
+        Random random = new Random();
 
+        for(int i = 0; i < randomNumbers.length; i++) {
+            int randomNumber = random.nextInt(201) - 100;
+            randomNumbers[i] = randomNumber;
+        }
+
+        System.out.println("Data set before insertion sorting: ");
+        for(int i = 0; i < randomNumbers.length; i++) {
+            System.out.print(randomNumbers[i] + " ");
+        }
+
+        for(int i = 0; i < randomNumbers.length - 1; i++) {
+            for(int j = 0; j < randomNumbers.length - 1 - i; j++) {
+                if(randomNumbers[j] > randomNumbers[j + 1]) {
+                    int temp = randomNumbers[j];
+                    randomNumbers[j] = randomNumbers[j + 1];
+                    randomNumbers[j + 1] = temp;
+                }
+            }
+        }
+
+        System.out.println("\n\nData set after insertion sorting: ");
+        for(int i = 0; i < randomNumbers.length; i++) {
+            System.out.print(randomNumbers[i] + " ");
+        }
+
+        System.out.print("\n\n");
+
+    }
 
     private static void ShowMenu() {
         System.out.println("Menu of Searching and Sorting Testbed.\n");
