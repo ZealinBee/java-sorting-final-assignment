@@ -13,6 +13,8 @@ public class Main {
                 break;
             }else if(userInput.equals("1")) {
                 LinearSearch();
+            }else if(userInput.equals("2")) {
+                BinarySearch();
             }
         }
 
@@ -37,6 +39,35 @@ public class Main {
         }
     }
 
+    public static void BinarySearch() {
+        int[] array = {1,2,3,4,5,6,7,8,9};
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("In the list are values "  + array[0] + "..." + array[array.length - 1] + "; which value would you like to search?");
+        int left = 0;
+        int right = array.length - 1;
+        boolean found = false;
+        int userInput = scanner.nextInt();
+        while(left <= right) {
+            int mid = left + (right - left) / 2;
+            if (array[mid] == userInput) {
+                found = true;
+                break;
+            } else if (array[mid] < userInput) {
+                left = mid + 1;
+            } else {
+                right = mid - 1;
+            }
+        }
+        if(found) {
+            System.out.println("\nFound\n");
+        }else {
+            System.out.println("\nNot Found\n");
+        }
+
+    }
+
+
+
     private static void ShowMenu() {
         System.out.println("Menu of Searching and Sorting Testbed.\n");
         System.out.println("1) Linear Searching");
@@ -47,4 +78,4 @@ public class Main {
         System.out.println("q/Q) Quit\n");
         System.out.print("Your choice: ");
     }
-    }
+}
