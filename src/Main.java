@@ -2,6 +2,7 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Main {
+    // I am a c# dev, I realized that methods are supposed to be in camel case after I was done with the project
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
@@ -18,6 +19,8 @@ public class Main {
                 BinarySearch();
             }else if(userInput.equals("3")) {
                 BubbleSort();
+            }else if(userInput.equals("4")) {
+                MergeSort();
             }
         }
 
@@ -100,7 +103,82 @@ public class Main {
         }
 
         System.out.print("\n\n");
+    }
 
+    public static void MergeSort() {
+        // This sort is O(n^2)
+        int[] randomNumbers = new int[10];
+        Random random = new Random();
+
+        for(int i = 0; i < randomNumbers.length; i++) {
+            int randomNumber = random.nextInt(201) - 100;
+            randomNumbers[i] = randomNumber;
+        }
+
+        System.out.println("Data set before insertion sorting: ");
+        for(int i = 0; i < randomNumbers.length; i++) {
+            System.out.print(randomNumbers[i] + " ");
+        }
+
+        MergeSorting(randomNumbers, 0, randomNumbers.length - 1);
+
+        System.out.println("\n\nData set after insertion sorting: ");
+        for(int i = 0; i < randomNumbers.length; i++) {
+            System.out.print(randomNumbers[i] + " ");
+        }
+
+        System.out.print("\n\n");
+    }
+
+    static void MergeSorting(int arr[], int left, int right) {
+        if(left < right) {
+            int middle = left + (right - left) / 2;
+
+            MergeSorting(arr, left, middle);
+            MergeSorting(arr, middle + 1, right);
+
+            Merge(arr, left, middle, right);
+        }
+    }
+
+    private static void Merge(int[] arr, int l, int m, int r) {
+        int n1 = m - l + 1;
+        int n2 = r - m;
+
+        int L[] = new int[n1];
+        int R[] = new int[n2];
+
+        for (int i = 0; i < n1; ++i)
+            L[i] = arr[l + i];
+        for (int j = 0; j < n2; ++j)
+            R[j] = arr[m + 1 + j];
+
+        int i = 0, j = 0;
+
+        int k = l;
+        while (i < n1 && j < n2) {
+            if (L[i] <= R[j]) {
+                arr[k] = L[i];
+                i++;
+            }
+            else {
+                arr[k] = R[j];
+                j++;
+            }
+            k++;
+        }
+
+        while (i < n1) {
+            arr[k] = L[i];
+            i++;
+            k++;
+        }
+
+        while (j < n2) {
+            arr[k] = R[j];
+            j++;
+            k++;
+        }
     }
 
     private static void ShowMenu() {
