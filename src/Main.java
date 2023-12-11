@@ -2,7 +2,8 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Main {
-    // I am a c# dev, I realized that methods are supposed to be in camel case after I was done with the project
+    // I am a c# dev, I realized that methods are supposed to be in camel case for
+    // java after I was done with the project, sorry if they're in pascal case.
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
@@ -13,47 +14,53 @@ public class Main {
             if (userInput.equalsIgnoreCase("q")) {
                 System.out.println("Exiting the program. Goodbye!");
                 break;
-            }else if(userInput.equals("1")) {
+            } else if (userInput.equals("1")) {
                 LinearSearch();
-            }else if(userInput.equals("2")) {
+            } else if (userInput.equals("2")) {
                 BinarySearch();
-            }else if(userInput.equals("3")) {
+            } else if (userInput.equals("3")) {
                 BubbleSort();
-            }else if(userInput.equals("4")) {
+            } else if (userInput.equals("4")) {
                 MergeSort();
+            } else if (userInput.equals("5")) {
+                System.out.println("Not implemented.");
+            } else {
+                System.out.println("Invalid input.");
             }
         }
 
-}
+    }
 
     private static void LinearSearch() {
-        int[] array = {1,2,3,4,5,6,7,8,9};
+        int[] array = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
         Scanner scanner = new Scanner(System.in);
-        System.out.println("In the list are values "  + array[0] + "..." + array[array.length - 1] + "; which value would you like to search?");
+        System.out.println("In the list are values " + array[0] + "..." + array[array.length - 1]
+                + "; which value would you like to search?");
         int userInput = scanner.nextInt();
         boolean found = false;
-        for(int i = 0; i < array.length; i++) {
-            if(array[i] == userInput) {
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] == userInput) {
                 found = true;
                 break;
             }
         }
-        if(found) {
+        if (found) {
             System.out.println("\nFound\n");
-        }else {
+        } else {
             System.out.println("\nNot Found\n");
         }
     }
 
     public static void BinarySearch() {
-        int[] array = {1,2,3,4,5,6,7,8,9};
+        int[] array = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
         Scanner scanner = new Scanner(System.in);
-        System.out.println("In the list are values "  + array[0] + "..." + array[array.length - 1] + "; which value would you like to search?");
+        System.out.println("In the list are values " + array[0] + "..." + array[array.length - 1]
+                + "; which value would you like to search?");
         int left = 0;
         int right = array.length - 1;
         boolean found = false;
         int userInput = scanner.nextInt();
-        while(left <= right) {
+        while (left <= right) {
             int mid = left + (right - left) / 2;
             if (array[mid] == userInput) {
                 found = true;
@@ -64,9 +71,9 @@ public class Main {
                 right = mid - 1;
             }
         }
-        if(found) {
+        if (found) {
             System.out.println("\nFound\n");
-        }else {
+        } else {
             System.out.println("\nNot Found\n");
         }
 
@@ -77,19 +84,19 @@ public class Main {
         int[] randomNumbers = new int[10];
         Random random = new Random();
 
-        for(int i = 0; i < randomNumbers.length; i++) {
+        for (int i = 0; i < randomNumbers.length; i++) {
             int randomNumber = random.nextInt(201) - 100;
             randomNumbers[i] = randomNumber;
         }
 
         System.out.println("Data set before insertion sorting: ");
-        for(int i = 0; i < randomNumbers.length; i++) {
+        for (int i = 0; i < randomNumbers.length; i++) {
             System.out.print(randomNumbers[i] + " ");
         }
 
-        for(int i = 0; i < randomNumbers.length - 1; i++) {
-            for(int j = 0; j < randomNumbers.length - 1 - i; j++) {
-                if(randomNumbers[j] > randomNumbers[j + 1]) {
+        for (int i = 0; i < randomNumbers.length - 1; i++) {
+            for (int j = 0; j < randomNumbers.length - 1 - i; j++) {
+                if (randomNumbers[j] > randomNumbers[j + 1]) {
                     int temp = randomNumbers[j];
                     randomNumbers[j] = randomNumbers[j + 1];
                     randomNumbers[j + 1] = temp;
@@ -98,7 +105,7 @@ public class Main {
         }
 
         System.out.println("\n\nData set after insertion sorting: ");
-        for(int i = 0; i < randomNumbers.length; i++) {
+        for (int i = 0; i < randomNumbers.length; i++) {
             System.out.print(randomNumbers[i] + " ");
         }
 
@@ -110,20 +117,20 @@ public class Main {
         int[] randomNumbers = new int[10];
         Random random = new Random();
 
-        for(int i = 0; i < randomNumbers.length; i++) {
+        for (int i = 0; i < randomNumbers.length; i++) {
             int randomNumber = random.nextInt(201) - 100;
             randomNumbers[i] = randomNumber;
         }
 
         System.out.println("Data set before insertion sorting: ");
-        for(int i = 0; i < randomNumbers.length; i++) {
+        for (int i = 0; i < randomNumbers.length; i++) {
             System.out.print(randomNumbers[i] + " ");
         }
 
         MergeSorting(randomNumbers, 0, randomNumbers.length - 1);
 
         System.out.println("\n\nData set after insertion sorting: ");
-        for(int i = 0; i < randomNumbers.length; i++) {
+        for (int i = 0; i < randomNumbers.length; i++) {
             System.out.print(randomNumbers[i] + " ");
         }
 
@@ -131,7 +138,7 @@ public class Main {
     }
 
     static void MergeSorting(int arr[], int left, int right) {
-        if(left < right) {
+        if (left < right) {
             int middle = left + (right - left) / 2;
 
             MergeSorting(arr, left, middle);
@@ -160,8 +167,7 @@ public class Main {
             if (L[i] <= R[j]) {
                 arr[k] = L[i];
                 i++;
-            }
-            else {
+            } else {
                 arr[k] = R[j];
                 j++;
             }
